@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import com.demo.adminService.client.RatingsClient;
 import com.demo.adminService.entity.AdminUser;
 import com.demo.adminService.entity.Ratings;
 import com.demo.adminService.entity.User;
@@ -36,6 +38,14 @@ public class AdminController {
 	
 	//@Autowired
 	//private DiscoveryClient discoveryClient; //get instances of services on eureka
+	
+	@Autowired
+	private RatingsClient ratingClient;
+	
+	@GetMapping("/ratings")
+	public UserRatings getUserRatings() {
+		return ratingClient.getUserRatings(1);
+	}
 
 	@GetMapping("/admin/associatedUsers/{id}")
 	//@HystrixCommand(fallbackMethod = "getFallBackUsers") //break this call when something goes wrong and wait for sometimes so that threads don't build up.
