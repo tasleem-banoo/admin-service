@@ -10,11 +10,11 @@ import lombok.Data;
 //@Data is equivalent to @Getter + @Setter + @RequiredArgsConstructor + @ToString + @EqualsAndHashCode
 @Data
 //@Entity
-public class User {
+public class UserDetails {
 	
 	//@Id
 	//@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private int userId;
+	private int id;
 	private String firstName;
 	private String lastName;
 

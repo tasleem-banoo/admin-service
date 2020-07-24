@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.demo.adminService.entity.AdminUser;
 import com.demo.adminService.entity.Ratings;
-import com.demo.adminService.entity.User;
+import com.demo.adminService.entity.UserDetails;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
@@ -25,8 +25,8 @@ public class UserInfoService {
 			//}
 			) 
 	public AdminUser getUsers(Ratings userRating) {
-		User user = restTemplate.getForObject("http://user-service/user/"+userRating.getUserId(), User.class);
-		return new AdminUser(1,user.getUserId(), user.getFirstName(), user.getLastName(), userRating.getRating());
+		UserDetails user = restTemplate.getForObject("http://user-service/user/"+userRating.getUserId(), UserDetails.class);
+		return new AdminUser(1,user.getId(), user.getFirstName(), user.getLastName(), userRating.getRating());
 	}
 	
 	public AdminUser getFallBackUsers(Ratings userRating) {

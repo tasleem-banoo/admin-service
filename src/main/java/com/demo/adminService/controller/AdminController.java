@@ -15,7 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.demo.adminService.client.RatingsClient;
 import com.demo.adminService.entity.AdminUser;
 import com.demo.adminService.entity.Ratings;
-import com.demo.adminService.entity.User;
+import com.demo.adminService.entity.UserDetails;
 import com.demo.adminService.entity.UserRatings;
 import com.demo.adminService.service.UserInfoService;
 import com.demo.adminService.service.UserRatingInfoService;
